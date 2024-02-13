@@ -44,6 +44,10 @@ func dump(v interface{}) hclog.Format {
 	return hclog.Fmt("%v", v)
 }
 
+func (s *RawProviderServer) SetLogger(logger hclog.Logger) {
+	s.logger = logger
+}
+
 // PrepareProviderConfig function
 func (s *RawProviderServer) PrepareProviderConfig(ctx context.Context, req *tfprotov5.PrepareProviderConfigRequest) (*tfprotov5.PrepareProviderConfigResponse, error) {
 	s.logger.Trace("[PrepareProviderConfig][Request]\n%s\n", dump(*req))
